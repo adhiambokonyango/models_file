@@ -1,18 +1,14 @@
 const Sequelize = require('sequelize');
-//const dotenv = require('dotenv');
-
-//dotenv.config();
-
 
 const con =  new Sequelize.Sequelize(
 
-    'database',
-    "username",
-    "password",
+    'versions',
+    "versions",
+    "B0st#20zz",
 
     {
-        host: "host",
-        dialect: "dialect",
+        host: "41.76.175.65",
+        dialect: "mysql",
         operatorsAliases: false,
         pool: {
             max: 5,

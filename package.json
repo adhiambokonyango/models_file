@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./common/dbConnect.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mysql2": "^2.3.3",
     "sequelize": "^6.6.2",
     "sequelize-automate": "^1.2.2",
     "tedious": "^11.0.7"
