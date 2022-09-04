@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 
 const con =  new Sequelize.Sequelize(
 
-    'versions',
-    "versions",
-    "B0st#20zz",
+    'inventory',
+    "root",
+    "Mary@31547207",
 
     {
-        host: "41.76.175.65",
+        host: "localhost",
         dialect: "mysql",
         operatorsAliases: false,
         pool: {

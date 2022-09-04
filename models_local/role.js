@@ -4,30 +4,30 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    rights_id: {
-      type: DataTypes.INTEGER,
+    RoleID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "rights_id"
+      field: "RoleID"
     },
-    name: {
-      type: DataTypes.STRING(50),
+    Role: {
+      type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "name"
+      field: "Role"
     }
   };
   const options = {
-    tableName: "rights",
+    tableName: "role",
     comment: "",
     indexes: []
   };
-  const RightsModel = sequelize.define("rights_model", attributes, options);
-  return RightsModel;
+  const RoleModel = sequelize.define("role_model", attributes, options);
+  return RoleModel;
 };

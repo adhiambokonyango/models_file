@@ -4,30 +4,30 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    role_id: {
-      type: DataTypes.INTEGER,
+    RegionID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "role_id"
+      field: "RegionID"
     },
-    name: {
+    Region: {
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "name"
+      field: "Region"
     }
   };
   const options = {
-    tableName: "roles",
+    tableName: "region",
     comment: "",
     indexes: []
   };
-  const RolesModel = sequelize.define("roles_model", attributes, options);
-  return RolesModel;
+  const RegionModel = sequelize.define("region_model", attributes, options);
+  return RegionModel;
 };

@@ -4,30 +4,30 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    PhotoID: {
-      type: DataTypes.INTEGER,
+    PermissionID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "PhotoID"
+      field: "PermissionID"
     },
-    Photo: {
-      type: nvarchar(max),
+    Permission: {
+      type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Photo"
+      field: "Permission"
     }
   };
   const options = {
-    tableName: "photo",
+    tableName: "permission",
     comment: "",
     indexes: []
   };
-  const PhotoModel = sequelize.define("photo_model", attributes, options);
-  return PhotoModel;
+  const PermissionModel = sequelize.define("permission_model", attributes, options);
+  return PermissionModel;
 };

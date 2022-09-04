@@ -4,57 +4,48 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    id: {
-      type: DataTypes.INTEGER,
+    SectionID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "SectionID"
     },
-    rights_id: {
-      type: DataTypes.INTEGER,
+    Section: {
+      type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "rights_id",
-      references: {
-        key: "rights_id",
-        model: "rights_model"
-      }
+      field: "Section"
     },
-    role_id: {
-      type: DataTypes.INTEGER,
+    DepartmentID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "role_id",
+      field: "DepartmentID",
       references: {
-        key: "role_id",
-        model: "roles_model"
+        key: "DepartmentID",
+        model: "department_model"
       }
     }
   };
   const options = {
-    tableName: "role_right",
+    tableName: "section",
     comment: "",
     indexes: [{
-      name: "rights_id",
+      name: "section_department_null_fk",
       unique: false,
       type: "BTREE",
-      fields: ["rights_id"]
-    }, {
-      name: "role_id",
-      unique: false,
-      type: "BTREE",
-      fields: ["role_id"]
+      fields: ["DepartmentID"]
     }]
   };
-  const RoleRightModel = sequelize.define("role_right_model", attributes, options);
-  return RoleRightModel;
+  const SectionModel = sequelize.define("section_model", attributes, options);
+  return SectionModel;
 };

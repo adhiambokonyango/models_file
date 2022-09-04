@@ -4,57 +4,57 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    post_id: {
-      type: DataTypes.INTEGER,
+    OfficeID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "post_id"
+      field: "OfficeID"
     },
-    name: {
+    OfficeName: {
       type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "name"
+      field: "OfficeName"
     },
-    office_code: {
-      type: DataTypes.STRING(250),
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "office_code"
-    },
-    category: {
+    OfficeCode: {
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "category"
+      field: "OfficeCode"
     },
-    region: {
-      type: DataTypes.STRING(50),
+    RegionID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "region"
+      field: "RegionID",
+      references: {
+        key: "RegionID",
+        model: "region_model"
+      }
     }
   };
   const options = {
-    tableName: "post_offices",
+    tableName: "office",
     comment: "",
-    indexes: []
+    indexes: [{
+      name: "office_region_null_fk",
+      unique: false,
+      type: "BTREE",
+      fields: ["RegionID"]
+    }]
   };
-  const PostOfficesModel = sequelize.define("post_offices_model", attributes, options);
-  return PostOfficesModel;
+  const OfficeModel = sequelize.define("office_model", attributes, options);
+  return OfficeModel;
 };

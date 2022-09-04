@@ -4,66 +4,48 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    payment_id: {
-      type: DataTypes.INTEGER,
+    EquipmentID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "payment_id"
+      field: "EquipmentID"
     },
-    customer_name: {
+    Equipment: {
       type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "customer_name"
+      field: "Equipment"
     },
-    payroll: {
+    Manufacturer: {
       type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "payroll"
+      field: "Manufacturer"
     },
-    account_number: {
+    Make: {
       type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "account_number"
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "date"
-    },
-    transaction_code: {
-      type: DataTypes.STRING(250),
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "transaction_code"
+      field: "Make"
     }
   };
   const options = {
-    tableName: "payments",
+    tableName: "equipment",
     comment: "",
     indexes: []
   };
-  const PaymentsModel = sequelize.define("payments_model", attributes, options);
-  return PaymentsModel;
+  const EquipmentModel = sequelize.define("equipment_model", attributes, options);
+  return EquipmentModel;
 };

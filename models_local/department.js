@@ -4,48 +4,48 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    passport_id: {
-      type: DataTypes.INTEGER,
+    DepartmentID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "passport_id"
+      field: "DepartmentID"
     },
-    tracking_number: {
+    Department: {
       type: DataTypes.STRING(250),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "tracking_number"
+      field: "Department"
     },
-    pg_barcode: {
-      type: DataTypes.STRING(250),
+    OfficeID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "pg_barcode"
-    },
-    status: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "status"
+      field: "OfficeID",
+      references: {
+        key: "OfficeID",
+        model: "office_model"
+      }
     }
   };
   const options = {
-    tableName: "passport",
+    tableName: "department",
     comment: "",
-    indexes: []
+    indexes: [{
+      name: "department_office_null_fk",
+      unique: false,
+      type: "BTREE",
+      fields: ["OfficeID"]
+    }]
   };
-  const PassportModel = sequelize.define("passport_model", attributes, options);
-  return PassportModel;
+  const DepartmentModel = sequelize.define("department_model", attributes, options);
+  return DepartmentModel;
 };

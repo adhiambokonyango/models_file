@@ -4,57 +4,57 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    id: {
-      type: DataTypes.INTEGER,
+    UserRoleID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "UserRoleID"
     },
-    booking_id: {
-      type: DataTypes.INTEGER,
+    UserID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "booking_id",
+      field: "UserID",
       references: {
-        key: "booking_id",
-        model: "booking_model"
+        key: "UserID",
+        model: "user_model"
       }
     },
-    payment_id: {
-      type: DataTypes.INTEGER,
+    RoleID: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "payment_id",
+      field: "RoleID",
       references: {
-        key: "payment_id",
-        model: "payments_model"
+        key: "RoleID",
+        model: "role_model"
       }
     }
   };
   const options = {
-    tableName: "booking_payment",
+    tableName: "user-role",
     comment: "",
     indexes: [{
-      name: "booking_id",
+      name: "user_role_role_null_fk",
       unique: false,
       type: "BTREE",
-      fields: ["booking_id"]
+      fields: ["RoleID"]
     }, {
-      name: "payment_id",
+      name: "user_role_user_null_fk",
       unique: false,
       type: "BTREE",
-      fields: ["payment_id"]
+      fields: ["UserID"]
     }]
   };
-  const BookingPaymentModel = sequelize.define("booking_payment_model", attributes, options);
-  return BookingPaymentModel;
+  const UserRoleModel = sequelize.define("user-role_model", attributes, options);
+  return UserRoleModel;
 };
